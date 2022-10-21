@@ -57,3 +57,40 @@ function getSecret2() {
 
 let getValueFan = getSecret2();
 console.log(getValueFan());
+
+function makePass(pass) {
+    return function guess(passGuess) {
+        return (passGuess === pass);
+    };
+}
+
+let tryGuess = makePass("secret");
+console.log("Guessing 'nope': " + tryGuess("nope"));
+console.log("Guessing 'secret': " + tryGuess("secret"));
+
+function multN(n) {
+    return function multBy(m) {
+        return (n * m);
+    };
+}
+
+let multBy3 = multN("3");
+console.log("Multiplying 2: " + multBy3("2"));
+console.log("Multiplying 3: " + multBy3("3"));
+
+function makeCounter() {
+    let count = 0;
+
+    return {
+        increment: function () {
+            count++;
+            return count;
+        }
+    };
+}
+
+let counter = makeCounter();
+
+console.log(counter.increment());
+console.log(counter.increment());
+console.log(counter.increment());
