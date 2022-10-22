@@ -94,3 +94,25 @@ let counter = makeCounter();
 console.log(counter.increment());
 console.log(counter.increment());
 console.log(counter.increment());
+
+function makeTimer(doneMessage, n) {
+    setTimeout(function () {
+        alert(doneMessage);
+    }, n);
+
+    doneMessage = "OUCH!";
+}
+
+makeTimer("Cookies are done!", 1000);
+
+window.onload = function () {
+    let count = 0;
+    let message = "You click me ";
+    let div = document.getElementById("message");
+
+    let button = document.getElementById("clickme");
+    button.onclick = function () {
+        count++;
+        div.innerHTML = message + count + " times!";
+    };
+}
